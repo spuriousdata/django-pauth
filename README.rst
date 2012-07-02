@@ -2,6 +2,9 @@
 django-pauth
 ##############
 
+This project is not complete or functional in any way. It's pre-alpha in active
+development, do not use it.
+
 Pluggable authentication for django. I wasn't really happy with the other
 social-login options available, so I wrote this.
 
