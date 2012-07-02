@@ -1,0 +1,1 @@
+-e hg+https://code.google.com/p/google-api-python-client/@1.0c2#egg=google-api-python-client
