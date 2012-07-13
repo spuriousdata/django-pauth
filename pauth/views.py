@@ -1,6 +1,12 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 
-class Loggin(TemplateView):
-    def get(self):
-        self.redirect(external_auth_url)
+from pauth import loaded_providers
+
+class Login(TemplateView):
+    def get(self, provider):
+        loaded_providers[provider].login()
+
+class Step2(TemplateView):
+    def get(self, provider, **kwargs):
+        loaded_providers[provider].callback(**kwargs)
 
