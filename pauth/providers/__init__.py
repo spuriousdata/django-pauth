@@ -17,6 +17,13 @@ class PAuthProvider(object):
         """
         pass
 
+    @abstractmethod
+    def callback(self, *args, **kwargs):
+        """
+        step2 callback
+        """
+        pass
+
     @property
     def name(self):
         """

@@ -1,4 +1,7 @@
-from django.conf.urls import patterns
+try:
+    from django.conf.urls import patterns
+except ImportError:
+    from django.conf.urls.defaults import patterns
 from django.core.exceptions import ImproperlyConfigured
 
 from pauth.providers import PAuthProvider
@@ -21,5 +24,8 @@ class GoogleProvider(PAuthProvider):
         return patterns('',
             (r'^google/$', Step2.as_view(), {'provider':'GoogleProvider'}),
         )
+
+    def callback(self, *args, **kwargs):
+        pass
 
 provider = GoogleProvider()

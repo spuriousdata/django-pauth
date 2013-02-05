@@ -11,7 +11,17 @@ except AttributeError:
 
 prefer = conf.get('check_first', 'internal')
 
-loaded_providers = dict(map(lambda x: (x.name, x), [import_module(p).provider for p in conf.get('providers', [])]))
+internal = {}
+external = {}
+
+internal = dict(map(lambda x: (x.name, x),
+                            [import_module(p).provider for p in conf['providers'].get('internal', [])]))
+external = dict(map(lambda x: (x.name, x),
+                                 [import_module(p).provider for p in conf['providers'].get('external', [])]))
+
+import pdb; pdb.set_trace()
+loaded_providers = internal.copy()
+loaded_providers.update(external)
 
 [lp.configure(conf['vendor']) for lp in loaded_providers.values()]
 

@@ -7,7 +7,10 @@ class LinkedinProvider(PAuthProvider):
     def configure(self, conf):
         pass
 
-    def name(self):
-        return "google"
+    def urls(self):
+        return ()
+
+    def callback(self, *args, **kwargs):
+        pass
 
 provider = LinkedinProvider()
